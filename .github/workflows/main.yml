@@ -1,0 +1,47 @@
+name: Download and Combine Proxy Lists
+
+on:
+  workflow_dispatch: # Memungkinkan kamu menjalankan workflow secara manual dari tab Actions
+  schedule:
+    - cron: '0 */6 * * *' # Jalankan setiap 6 jam. Sesuaikan sesuai kebutuhan.
+
+# Tambahkan blok permissions di sini, di level workflow
+permissions:
+  contents: write # Ini memberikan izin tulis ke GITHUB_TOKEN untuk mengakses konten repositori
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download proxy list 1
+      run: |
+        curl -o proxy_list_1.txt https://raw.githubusercontent.com/h58fmb0344g9h3/p57gdv3j3n0vg334/refs/heads/main/f74bjd2h2ko99f3j5
+
+    - name: Download proxy list 2
+      run: |
+        curl -o proxy_list_2.txt https://raw.githubusercontent.com/FoolVPN-ID/Nautica/refs/heads/main/proxyList.txt
+
+    - name: Combine and deduplicate proxy lists
+      run: |
+        cat proxy_list_1.txt proxy_list_2.txt | sort -u > proxy_ip.txt
+
+    - name: Upload combined proxy list as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: combined-proxy-list
+        path: proxy_ip.txt
+        retention-days: 7 # Simpan artifact selama 7 hari
+
+    - name: Commit and push changes (optional)
+      # Langkah ini akan mengupload file proxy_ip.txt yang baru ke repository kamu.
+      # Hapus atau komen baris ini jika kamu tidak ingin file di-commit ke repo.
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add proxy_ip.txt
+        git commit -m "Update proxy_ip.txt with latest combined lists" || echo "No changes to commit"
+        git push
