@@ -1,13 +1,12 @@
-name: Download and Combine Proxy Lists
+name: Download and Combine Proxy Lists (Advanced Deduplication)
 
 on:
-  workflow_dispatch: # Memungkinkan kamu menjalankan workflow secara manual dari tab Actions
+  workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *' # Jalankan setiap 6 jam. Sesuaikan sesuai kebutuhan.
+    - cron: '0 */6 * * *'
 
-# Tambahkan blok permissions di sini, di level workflow
 permissions:
-  contents: write # Ini memberikan izin tulis ke GITHUB_TOKEN untuk mengakses konten repositori
+  contents: write # Memberikan izin tulis ke GITHUB_TOKEN untuk mengakses konten repositori
 
 jobs:
   build:
@@ -25,23 +24,29 @@ jobs:
       run: |
         curl -o proxy_list_2.txt https://raw.githubusercontent.com/FoolVPN-ID/Nautica/refs/heads/main/proxyList.txt
 
-    - name: Combine and deduplicate proxy lists
+    - name: Combine and deduplicate proxy lists based on IP and Port
       run: |
-        cat proxy_list_1.txt proxy_list_2.txt | sort -u > proxy_ip.txt
+        # Gabungkan kedua file
+        cat proxy_list_1.txt proxy_list_2.txt > combined_proxies_raw.txt
+
+        # Gunakan awk untuk menghapus duplikasi berdasarkan dua kolom pertama (IP dan Port)
+        # -F, : Menggunakan koma sebagai pemisah field
+        # {key = $1 "," $2} : Membuat kunci unik dari kolom pertama dan kedua
+        # !seen[key]++ : Jika kunci belum terlihat, cetak baris dan tandai sebagai terlihat
+        # Hasilnya akan mempertahankan baris pertama yang ditemukan untuk setiap kombinasi IP dan Port yang unik.
+        awk -F, '!seen[$1","$2]++' combined_proxies_raw.txt > proxy_ip.txt
 
     - name: Upload combined proxy list as artifact
       uses: actions/upload-artifact@v4
       with:
         name: combined-proxy-list
         path: proxy_ip.txt
-        retention-days: 7 # Simpan artifact selama 7 hari
+        retention-days: 7
 
     - name: Commit and push changes (optional)
-      # Langkah ini akan mengupload file proxy_ip.txt yang baru ke repository kamu.
-      # Hapus atau komen baris ini jika kamu tidak ingin file di-commit ke repo.
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add proxy_ip.txt
-        git commit -m "Update proxy_ip.txt with latest combined lists" || echo "No changes to commit"
+        git commit -m "Update proxy_ip.txt with latest combined lists and deduplicated by IP/Port" || echo "No changes to commit"
         git push
