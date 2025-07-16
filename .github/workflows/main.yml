@@ -1,4 +1,4 @@
-name: Download and Combine Proxy Lists (Advanced Deduplication & Country Count)
+name: update
 
 on:
   workflow_dispatch:
@@ -24,10 +24,15 @@ jobs:
       run: |
         curl -o proxy_list_2.txt https://raw.githubusercontent.com/FoolVPN-ID/Nautica/refs/heads/main/proxyList.txt
 
-    - name: Combine and deduplicate proxy lists based on IP and Port
+    - name: Combine, deduplicate by IP/Port, and then filter by ISP
       run: |
+        # Menggabungkan dan menduplikasi berdasarkan IP dan Port terlebih dahulu
         cat proxy_list_1.txt proxy_list_2.txt > combined_proxies_raw.txt
-        awk -F, '!seen[$1","$2]++' combined_proxies_raw.txt > proxy_ip.txt
+        awk -F, '!seen[$1","$2]++' combined_proxies_raw.txt > unique_ip_port_proxies.txt
+
+        # Sekarang, filter berdasarkan ISP. Ambil baris pertama untuk setiap ISP unik.
+        # Kolom ke-4 adalah ISP
+        awk -F, '!seen_isp[$4]++' unique_ip_port_proxies.txt > proxy_ip.txt
 
     - name: Create total.txt with proxy count per country
       run: |
@@ -46,5 +51,5 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add proxy_ip.txt total.txt # Menambahkan total.txt ke staging area
-        git commit -m "Update proxy_ip.txt and total.txt with latest combined lists and deduplicated by IP/Port and country count" || echo "No changes to commit"
+        git commit -m "Update proxy_ip.txt and total.txt with latest combined lists, deduplicated by IP/Port, and filtered by unique ISP" || echo "No changes to commit"
         git push
