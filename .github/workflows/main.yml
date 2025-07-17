@@ -6,7 +6,7 @@ on:
     - cron: '0 */6 * * *'
 
 permissions:
-  contents: write # Memberikan izin tulis ke GITHUB_TOKEN untuk mengakses konten repositori
+  contents: write
 
 jobs:
   build:
@@ -26,17 +26,32 @@ jobs:
 
     - name: Combine, deduplicate by IP/Port, and then filter by ISP
       run: |
-        # Menggabungkan dan menduplikasi berdasarkan IP dan Port terlebih dahulu
         cat proxy_list_1.txt proxy_list_2.txt > combined_proxies_raw.txt
         awk -F, '!seen[$1","$2]++' combined_proxies_raw.txt > unique_ip_port_proxies.txt
-
-        # Sekarang, filter berdasarkan ISP. Ambil baris pertama untuk setiap ISP unik.
-        # Kolom ke-4 adalah ISP
         awk -F, '!seen_isp[$4]++' unique_ip_port_proxies.txt > proxy_ip.txt
+
+    - name: Create proxy_list.json from proxy_ip.txt
+      run: |
+        #!/usr/bin/env python3
+        import json
+
+        proxy_data = {}
+        with open('proxy_ip.txt', 'r') as f:
+            for line in f:
+                parts = line.strip().split(',')
+                if len(parts) >= 3:
+                    ip_port = parts[0].strip() + ':' + parts[1].strip()
+                    country_code = parts[2].strip()
+
+                    if country_code not in proxy_data:
+                        proxy_data[country_code] = []
+                    proxy_data[country_code].append(ip_port)
+
+        with open('proxy_list.json', 'w') as f:
+            json.dump(proxy_data, f, indent=2)
 
     - name: Create total.txt with proxy count per country
       run: |
-        # Mengambil kode negara (kolom ke-3), menghitung kemunculannya, dan memformat output
         awk -F, '{count[$3]++} END {for (country in count) print country " : " count[country] " PROXY"}' proxy_ip.txt | sort > total.txt
 
     - name: Upload combined proxy list as artifact
@@ -46,10 +61,17 @@ jobs:
         path: proxy_ip.txt
         retention-days: 7
 
+    - name: Upload JSON proxy list as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: json-proxy-list
+        path: proxy_list.json
+        retention-days: 7
+
     - name: Commit and push changes (optional)
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        git add proxy_ip.txt total.txt # Menambahkan total.txt ke staging area
-        git commit -m "Update proxy_ip.txt and total.txt with latest combined lists, deduplicated by IP/Port, and filtered by unique ISP" || echo "No changes to commit"
+        git add proxy_ip.txt total.txt proxy_list.json
+        git commit -m "Update proxy_ip.txt, total.txt, and proxy_list.json with latest combined lists, deduplicated by IP/Port, and filtered by unique ISP" || echo "No changes to commit"
         git push
