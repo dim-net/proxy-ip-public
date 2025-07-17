@@ -1,62 +1,77 @@
-name: Process Proxy List
+name: update
 
 on:
-  push:
-    branches:
-      - main # Ganti dengan branch yang relevan jika bukan 'main'
-  workflow_dispatch: # Memungkinkan menjalankan workflow secara manual dari GitHub UI
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install jq
-      run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Download proxy list 1
+        run: |
+          curl -o proxy_list_1.txt https://raw.githubusercontent.com/h58fmb0344g9h3/p57gdv3j3n0vg334/refs/heads/main/f74bjd2h2ko99f3j5
 
-    - name: Create proxy_ip.txt (for demonstration)
-      run: |
-        echo "192.168.1.1,8080,US" > proxy_ip.txt
-        echo "10.0.0.5,3128,ID" >> proxy_ip.txt
-        echo "192.168.1.2,8081,US" >> proxy_ip.txt
-        echo "172.16.0.10,8888,JP" >> proxy_ip.txt
-        echo "203.0.113.1,80,GB" >> proxy_ip.txt
-      # Anda bisa menghapus langkah ini jika file proxy_ip.txt sudah ada di repositori Anda.
-      # Pastikan proxy_ip.txt di-commit ke repositori Anda.
+      - name: Download proxy list 2
+        run: |
+          curl -o proxy_list_2.txt https://raw.githubusercontent.com/FoolVPN-ID/Nautica/refs/heads/main/proxyList.txt
 
-    - name: Process Proxy Data with Bash and jq
-      id: process_proxy
-      run: |
-        proxy_data_json="{}"
+      - name: Combine, deduplicate by IP/Port, and then filter by ISP
+        run: |
+          cat proxy_list_1.txt proxy_list_2.txt > combined_proxies_raw.txt
+          awk -F, '!seen[$1","$2]++' combined_proxies_raw.txt > unique_ip_port_proxies.txt
+          awk -F, '!seen_isp[$4]++' unique_ip_port_proxies.txt > proxy_ip.txt
 
-        while IFS=, read -r ip_part port_part country_code_part || [[ -n "$ip_part" ]]; do
-            # Hapus spasi di awal/akhir jika ada
-            ip_port=$(echo "${ip_part}:${port_part}" | xargs)
-            country_code=$(echo "${country_code_part}" | xargs)
+      - name: Create total.txt with proxy count per country
+        run: |
+          awk -F, '{count[$3]++} END {for (country in count) print country " : " count[country] " PROXY"}' proxy_ip.txt | sort > total.txt
 
-            if [ -n "$ip_port" ] && [ -n "$country_code" ]; then
-                # Cek apakah country_code sudah ada sebagai kunci di proxy_data_json
-                # Jika tidak ada, inisialisasi sebagai array kosong
-                if ! echo "$proxy_data_json" | jq -e "has(\"$country_code\")" > /dev/null; then
-                    proxy_data_json=$(echo "$proxy_data_json" | jq ". \"$country_code\" = []")
-                fi
+      - name: Create proxy_list.json
+        run: |
+          # Install jq if not already available (common on ubuntu-latest runners)
+          sudo apt-get update && sudo apt-get install -y jq
 
-                # Tambahkan ip_port ke array yang sesuai dengan country_code
-                proxy_data_json=$(echo "$proxy_data_json" | jq ". \"$country_code\" += [\"$ip_port\"]")
-            fi
-        done < proxy_ip.txt
+          # Initialize an empty JSON object
+          echo "{}" > proxy_list.json
 
-        # Simpan hasil ke proxy_list.json dengan indentasi 2
-        echo "$proxy_data_json" | jq '.' > proxy_list.json
+          # Read proxy_ip.txt line by line and populate the JSON
+          while IFS=',' read -r ip port country isp; do
+            # Combine IP and Port
+            ip_port="${ip}:${port}"
+            
+            # Add the ip:port to the corresponding country array in JSON
+            # If the country key doesn't exist, it will be created as an empty array first
+            # Then the ip:port is appended
+            jq --arg country "$country" --arg ip_port "$ip_port" \
+              'if .[$country] then .[$country] += [$ip_port] else .[$country] = [$ip_port] end' \
+              proxy_list.json > tmp.json && mv tmp.json proxy_list.json
+          done < proxy_ip.txt
 
-        echo "Generated proxy_list.json:"
-        cat proxy_list.json
+      - name: Upload combined proxy list as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: combined-proxy-list
+          path: proxy_ip.txt
+          retention-days: 7
 
-    - name: Upload proxy_list.json artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: proxy-list-json
-        path: proxy_list.json
+      - name: Upload proxy_list.json as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: proxy-list-json
+          path: proxy_list.json
+          retention-days: 7
+
+      - name: Commit and push changes (optional)
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add proxy_ip.txt total.txt proxy_list.json # Menambahkan proxy_list.json ke staging area
+          git commit -m "Update proxy_ip.txt, total.txt, and proxy_list.json with latest combined lists, deduplicated by IP/Port, and filtered by unique ISP" || echo "No changes to commit"
+          git push
