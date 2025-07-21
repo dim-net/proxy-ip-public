@@ -933,12 +933,12 @@
 221.124.30.40,16086,HK,HGC Global Communications Limited
 113.29.230.248,443,SG,Ready Server VPS Hosting
 31.56.196.230,2053,ID,GOLD IP LLC FZ
-31.56.196.240,2053,ID,GOLD IP LLC FZ139.185.34.131,443,AE,Oracle Corporation
+31.56.196.240,2053,ID,GOLD IP LLC FZ129.151.128.105,16731,AE,Oracle Corporation
 89.251.9.4,15466,CA,Cloudflare, Inc.
 109.237.97.1,443,DE,nuxt.cloud hosting provider
 146.70.101.111,443,DE,M247 LTD Frankfurt Infrastructure
 185.106.93.153,8443,DE,Smart Digital Ideas DOO
-185.231.204.237,8443,ES,WorkTitans B.V.
+185.231.204.237,2053,ES,WorkTitans B.V.
 146.70.88.123,2053,FR,M247 LTD Paris Infrastructure
 51.178.190.164,17984,FR,co Bestla
 82.64.152.55,20304,FR,Free SAS
@@ -946,10 +946,11 @@
 103.13.208.242,443,GB,O.M.C. COMPUTERS & COMMUNICATIONS LTD
 156.254.114.120,30011,HK,StepGo Limited
 23.226.8.80,444,HK,UDomain Web Hosting Company Limited
+38.207.172.42,443,HK,VMISS Inc.
 45.39.198.40,8080,HK,Internet Utilities NA LLC
 202.144.192.76,443,JP,Techavenue International Ltd
 103.232.213.117,8080,JP,Kvmcloud Network Co., Ltd
-146.56.140.79,22561,KR,Cloudflare London, LLC
+146.56.140.79,44699,KR,Cloudflare London, LLC
 146.56.162.25,443,KR,Oracle Corporation , Global software solutions , California , USA
 1.176.172.75,50000,KR,LG HelloVision Corp.
 211.169.234.3,50000,KR,DACOM Corp.
@@ -958,13 +959,14 @@
 166.1.201.179,443,NL,Baxet Group Inc.
 31.207.45.106,58221,NL,HOSTKEY B.V.
 188.119.113.222,443,NL,LIR Limited
+145.239.85.117,8443,PL,OVH VPS WAW
 217.73.63.121,443,RU,K2 Integration JSC
 194.67.78.233,999,RU,Reg.Ru Hosting
 213.171.10.123,443,RU,LC COMLINK
 92.241.18.106,443,RU,JSC Svyazinform
 77.91.78.4,2053,SE,Sergey Aleksandrovich Miroshkin
 194.127.193.240,50791,SG,Greencloud LLC
-185.181.210.92,8443,TR,hostigger_datacenter_TR
+185.181.210.92,2053,TR,hostigger_datacenter_TR
 188.132.129.199,2053,TR,ULTAHOST HOSTING VE VERI MERKEZI LTD. STI.
 220.130.80.171,20655,TW,Chunghwa Telecom Co.,Ltd.
 54.193.104.34,80,US,Amazon.com, Inc.
