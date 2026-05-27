@@ -8,7 +8,7 @@
 152.67.101.72,23010,AU,Oracle Public Cloud
 192.9.190.80,23862,AU,Oracle Corporation
 45.77.236.204,443,AU,Vultr Holdings, LLC
-185.82.218.224,9443,BG,ITLDC EU2.SOF Datacenter Network
+185.82.218.224,8443,BG,ITLDC EU2.SOF Datacenter Network
 79.124.7.236,444,BG,DA International Group Ltd. - AlphaVPS
 94.156.35.144,18836,BG,Redcluster LTD
 91.215.153.85,443,BG,Friendhosting LTD
@@ -19,12 +19,12 @@
 176.10.125.114,443,CH,Datasource AG
 91.245.225.69,443,CH,GLB Bulut Teknolojisi Limited Sirketi
 194.87.18.92,443,CH,Baxet Group Inc.
-45.90.58.58,81,CH,Green Floid LLC
 45.85.93.49,443,CH,Internet Utilities Europe and Asia Limited
+45.90.58.58,81,CH,Green Floid LLC
 45.95.232.18,2053,CH,GLOBAL CONNECTIVITY SOLUTIONS LLP
 81.91.214.162,443,CZ,OvaNet, a.s.
 159.69.92.30,443,DE,Hetzner Online GmbH
-18.184.55.249,443,DE,A100 ROW GmbH
+18.184.27.249,443,DE,A100 ROW GmbH
 5.61.39.183,443,DE,IROKO Networks Corporation
 45.138.72.141,443,DE,GTELCOM LLC
 109.237.97.1,443,DE,nuxt.cloud hosting provider
@@ -55,6 +55,7 @@
 77.221.155.230,8443,DE,AEZA GROUP LLC
 77.221.157.32,443,DE,Aeza International LTD
 81.95.4.189,443,DE,F3 Netze e.V.
+89.168.68.57,2053,DE,Oracle Svenska AB
 109.120.185.29,443,DE,NetCrafters OU
 181.41.194.176,15565,DE,RACK400 com netherlands Infrastructure
 85.193.95.23,8443,DE,Timeweb, LLP
@@ -67,8 +68,8 @@
 212.227.144.37,8443,ES,IONOS SE
 2.56.221.72,81,ES,G-Core Labs Customer assignment
 93.93.119.91,443,ES,ARSYS INTERNET S.L.U.
-46.8.237.3,443,FI,CGI GLOBAL LIMITED
 185.188.181.14,443,FI,PSERVERS Enterprise Network
+46.8.237.3,443,FI,CGI GLOBAL LIMITED
 77.221.144.210,443,FI,New Hosting Technologies LLC
 185.112.82.28,443,FI,Creanova
 195.26.230.99,8443,FI,undefined
@@ -94,12 +95,13 @@
 156.230.12.71,443,HK,263 Shanghai Communications Ltd.
 43.132.244.52,21415,HK,6 COLLYER QUAY
 141.11.91.67,8080,HK,Tusker Technologies Pty Ltd
-2.56.91.89,8443,HK,ihc.hk vps in Hong Kong
+192.131.142.161,46639,HK,365 Group LLC
+2.56.91.89,2053,HK,ihc.hk vps in Hong Kong
 221.125.10.8,57537,HK,HGC Global Communications Limited
 47.76.218.163,443,HK,Alibaba Cloud - HK
 43.218.77.16,443,ID,Amazon.com, Inc.
-36.95.152.58,12137,ID,PT Telekomunikasi Indonesia
 103.6.207.108,8080,ID,PT Pusat Media Indonesia
+36.95.152.58,12137,ID,PT Telekomunikasi Indonesia
 77.91.69.141,2053,IL,Webhost LLC
 216.10.243.159,443,IN,P.D.R Solutions FZC
 20.235.105.146,443,IN,Microsoft Corporation
@@ -113,16 +115,18 @@
 103.106.228.126,2053,JP,oneprovider.com - Tokyo Infrastructure
 138.3.222.124,46209,JP,Oracle Network Information Services
 158.247.250.157,81,KR,The Constant Company, LLC
-217.142.138.61,37914,KR,Oracle Svenska AB
 146.56.99.255,56789,KR,Oracle Corporation , Global software solutions , California , USA
 146.56.140.79,20309,KR,Cloudflare, Inc.
 121.153.38.160,30052,KR,Korea Telecom
 213.148.1.150,2053,KZ,Modern Server Solutions LLP
 79.142.51.162,65000,KZ,SMARTNET TOO
 195.135.252.139,443,LV,SIA VEESP
+31.128.33.253,443,LV,Beget LLC
 109.185.236.240,443,MD,JSC Moldtelecom S.A.
 5.181.158.96,443,MD,MivoCloud SRL
 45.86.86.53,443,MD,ALEXHOST SRL
+41.76.42.118,443,MU,Mauritius Telecom Ltd
+201.149.15.14,21585,MX,Megacable Comunicaciones de Mexico, S.A. de C.V.
 38.60.193.247,13300,MY,Kaopu Cloud HK Limited
 45.155.249.66,443,NL,servinga GmbH
 194.0.194.237,14181,NL,Serverio technologijos MB
@@ -144,8 +148,8 @@
 213.183.51.71,443,NL,Melbicom infrastructure
 77.220.214.135,443,NL,Podaon SIA
 185.243.112.197,443,NL,CrownCloud
-185.244.49.38,443,NL,Snowd Security OU
 89.35.131.5,443,NL,RCS Technologies FZE LLC
+185.244.49.38,443,NL,Snowd Security OU
 95.179.140.212,443,NL,JW Lucasweg 35
 45.133.118.153,443,NL,Hizakura B.V.
 146.59.19.208,8443,PL,OVH Sp. z o. o.
@@ -158,23 +162,23 @@
 45.144.48.186,8443,PL,Newserverlife LLC
 194.68.44.27,81,RO,EDIS IPv6 Infrastructure in Romania
 185.104.181.228,443,RO,DataNode DC SRL
-147.45.245.15,443,RU,JSC TIMEWEB
+147.45.253.105,8443,RU,JSC TIMEWEB
 31.129.48.222,8443,RU,Selectel Network
 37.230.114.182,2053,RU,JSC IOT
-89.110.89.229,2053,RU,Hosting technology LTD
-89.111.172.106,8443,RU,Domain names registrar REG.RU, Ltd
+85.198.109.79,8443,RU,Hosting technology LTD
+89.111.172.106,2053,RU,Domain names registrar REG.RU, Ltd
 92.241.18.106,443,RU,JSC Svyazinform
 95.46.1.22,2053,RU,Stolica Telecom Ltd.
 95.171.21.193,443,RU,Universum bit Ltd.
-85.30.217.230,25146,RU,NCNET Broadband customers
 45.139.184.183,2053,RU,LLC Vpsville
+85.30.217.230,25146,RU,NCNET Broadband customers
 188.93.140.11,443,SE,Prinode AB
 45.82.80.96,443,SE,Internetport Sweden AB
 47.74.254.191,8900,SG,Alibaba Cloud - SG
-143.42.66.91,443,SG,Viewqwest Pte Ltd
+143.42.66.91,443,SG,M1 LIMITED
 164.52.2.100,443,SG,UCUL-SG
 43.156.181.203,443,SG,16 COLLYER QUAY
-3.1.116.161,2053,SG,Amazon Data Services Singapore
+3.1.116.161,8443,SG,Amazon Data Services Singapore
 185.219.134.25,31564,TR,hostigger_datacenter_TR
 188.132.192.195,2053,TR,TradeZone LLC
 91.218.212.223,443,UA,TOV 'Dream Line Holding'
@@ -185,15 +189,16 @@
 74.48.140.177,443,US,MULTACOM CORPORATION
 195.123.241.122,50008,US,Total server solutions LLC
 172.235.49.135,17973,US,Linode
-47.253.87.21,52315,US,Alibaba Cloud - US
 15.204.57.47,7267,US,OVH US LLC
 104.168.167.197,27213,US,Hostwinds Seattle
 104.234.50.53,443,US,Private Customer
 107.173.30.154,27149,US,ColoCrossing
 154.29.150.2,8080,US,NetLab
+173.242.123.189,51042,US,Cluster Logic Inc
 18.216.55.100,443,US,Amazon Technologies Inc.
 213.170.157.1,443,US,RedShield Security Ltd
 45.151.132.228,19034,US,Spartan Host Ltd
+47.251.95.178,443,US,Alibaba Cloud - US
 50.228.203.26,443,US,Comcast Cable Communications, LLC
 72.13.122.137,443,US,Total Uptime Technologies LLC
 74.121.150.129,8443,US,IT7 Networks Inc
