@@ -17,24 +17,24 @@
 179.43.144.10,8000,CH,PRIVATE LAYER INC
 45.90.58.58,81,CH,Green Floid LLC
 45.85.93.49,443,CH,Internet Utilities Europe and Asia Limited
-91.245.225.79,2053,CH,GLB Bulut Teknolojisi Limited Sirketi
+91.245.225.79,8443,CH,GLB Bulut Teknolojisi Limited Sirketi
 45.95.232.18,2053,CH,GLOBAL CONNECTIVITY SOLUTIONS LLP
 91.107.166.26,2053,DE,Hetzner Online GmbH
 18.184.55.249,443,DE,A100 ROW GmbH
-5.61.39.183,443,DE,IROKO Networks Corporation
 45.138.72.141,443,DE,GTELCOM LLC
+5.61.39.183,443,DE,IROKO Networks Corporation
 109.237.97.1,443,DE,nuxt.cloud hosting provider
 80.76.32.165,443,DE,FIRST SERVER, SOCIEDAD LIMITADA
 37.120.186.205,2087,DE,netcup GmbH
 31.172.72.83,443,DE,www.fornex.com, Fornex Hosting S.L.
 88.198.18.246,8443,DE,HOS-512604
-139.162.145.35,2053,DE,139.162.0.0/16
 91.149.223.242,443,DE,Baxet Group Inc.
 194.39.204.118,65535,DE,Webhosting24 GmbH
 185.66.165.51,443,DE,Perfecto Mobile UK Ltd (/24 used in Germany)
 45.147.228.249,443,DE,aurologic GmbH
-159.100.9.253,2053,DE,UltaHost Inc
 94.159.98.23,2053,DE,H2.NEXUS Frankfurt Network
+159.100.9.253,2053,DE,UltaHost Inc
+139.162.133.162,15675,DE,139.162.0.0/16
 147.45.196.240,2053,DE,nuxtcloud
 158.180.49.11,2053,DE,oracle
 162.19.247.245,443,DE,OVH GmbH
@@ -48,7 +48,7 @@
 5.101.180.145,443,EE,Network for hosting services
 34.175.202.195,443,ES,Google LLC
 103.45.245.208,2053,ES,O.M.C. COMPUTERS & COMMUNICATIONS LTD
-193.17.183.157,8443,ES,JaJoJoo Madrid Region
+193.17.183.157,2053,ES,JaJoJoo Madrid Region
 212.227.144.37,8443,ES,IONOS SE
 193.17.183.166,8443,ES,HUIZE LTD
 2.56.221.72,81,ES,G-Core Labs Customer assignment
@@ -57,7 +57,8 @@
 185.188.181.14,443,FI,PSERVERS Enterprise Network
 185.112.82.28,443,FI,Creanova
 212.237.219.99,443,FI,HOSTKEY B.V.
-217.144.188.147,2053,FI,AEZA GROUP LLC
+109.120.185.29,443,FI,NetCrafters OU
+109.107.190.40,8443,FI,AEZA GROUP LLC
 152.228.191.232,443,FR,SEVIN Jacques
 88.218.76.170,443,FR,RACKNERD-FR
 95.182.96.30,2053,FR,CGI GLOBAL LIMITED
@@ -78,20 +79,18 @@
 221.125.10.8,57537,HK,HGC Global Communications Limited
 43.252.41.204,2443,HK,CommuniLink Internet Ltd.
 47.76.218.163,443,HK,Alibaba Cloud - HK
-36.95.152.58,12137,ID,PT Telekomunikasi Indonesia
 103.6.207.108,8080,ID,PT Pusat Media Indonesia
 54.229.164.147,2053,IE,Amazon.com, Inc.
 63.32.194.15,8443,IE,Amazon Data Services Ireland Limited
 77.91.69.141,2053,IL,Webhost LLC
 216.10.243.159,443,IN,P.D.R Solutions FZC
-20.235.105.146,443,IN,Microsoft Corporation
 87.120.237.36,81,IT,G-Core Labs S.A.
 118.27.12.40,38443,JP,GMO Internet, Inc.
 139.162.102.152,7002,JP,Akamai Connected Cloud / Linode
 140.83.57.20,13118,JP,imported inetnum object for OCPL-1
-45.11.1.118,44004,JP,CEGRGO-DigitalVM LLC - Tokyo
 103.75.118.144,2053,JP,Oneprovider.com - Japan Infrastructure
 103.106.228.126,2053,JP,oneprovider.com - Tokyo Infrastructure
+45.11.1.118,44004,JP,CEGRGO-DigitalVM LLC - Tokyo
 138.3.222.124,46209,JP,Oracle Network Information Services
 158.247.250.157,81,KR,The Constant Company, LLC
 146.56.140.79,44699,KR,Cloudflare London, LLC
@@ -104,7 +103,6 @@
 195.135.252.139,443,LV,SIA VEESP
 5.181.158.96,443,MD,MivoCloud SRL
 41.76.42.118,443,MU,Mauritius Telecom Ltd
-201.149.15.14,21585,MX,Megacable Comunicaciones de Mexico, S.A. de C.V.
 45.155.249.66,443,NL,servinga GmbH
 194.0.194.237,14181,NL,SkyCore Technologies L.L.C-FZ
 86.107.197.161,443,NL,MVPS LTD
@@ -123,7 +121,7 @@
 168.100.9.81,443,NL,BL Networks
 185.246.155.198,443,NL,Melbikomas UAB
 46.30.41.73,443,NL,Iron Hosting Centre Ltd., London, UK (Eurobyte VPS)
-195.133.39.185,443,NL,Individual Entrepreneur Anton Levin
+185.23.238.76,443,NL,Individual Entrepreneur Anton Levin
 193.160.96.232,443,NL,FiberXpress BV
 213.183.51.71,443,NL,Melbicom infrastructure
 77.220.214.135,443,NL,Podaon SIA
@@ -135,7 +133,7 @@
 188.116.40.37,443,PL,Artnet Sp. z o.o.
 31.133.0.143,2053,PL,BARTOSZ WASZAK trading as HOSTEAM S.C. TOMASZ GROSZEWSKI BARTOSZ WASZAK LUKASZ GROSZEWSKI
 145.239.88.255,2053,PL,OVH VPS WAW
-80.211.249.68,2053,PL,Aruba S.p.A. - Cloud Services PL1
+80.211.249.68,8443,PL,Aruba S.p.A. - Cloud Services PL1
 151.115.61.151,2053,PL,Warsaw, Poland
 217.12.206.160,81,PL,GREEN FLOID LLC
 45.144.48.186,8443,PL,Newserverlife LLC
@@ -144,20 +142,21 @@
 147.45.253.105,8443,RU,JSC TIMEWEB
 188.225.34.155,443,RU,TimeWeb Ltd.
 31.129.49.103,443,RU,Selectel Network
-85.198.109.79,2053,RU,Hosting technology LTD
+89.110.89.229,2053,RU,Hosting technology LTD
 89.111.172.106,2053,RU,Domain names registrar REG.RU, Ltd
 92.241.18.106,443,RU,JSC Svyazinform
-95.46.1.22,2053,RU,Stolica Telecom Ltd.
+95.46.1.22,8443,RU,Stolica Telecom Ltd.
+95.171.21.193,443,RU,Universum bit Ltd.
 45.139.184.183,2053,RU,LLC Vpsville
 45.82.80.96,443,SE,Internetport Sweden AB
 78.40.117.49,2053,SE,ALEXHOST SRL
 47.74.254.191,8900,SG,Alibaba Cloud - SG
-143.42.66.91,443,SG,Viewqwest Pte Ltd
+143.42.66.91,443,SG,M1 LIMITED
 164.52.2.100,443,SG,UCUL-SG
 43.156.181.203,443,SG,16 COLLYER QUAY
 13.250.131.37,443,SG,Amazon Data Services Singapore
 185.219.134.25,31564,TR,hostigger_datacenter_TR
-188.132.192.195,2053,TR,TradeZone LLC
+188.132.192.194,2053,TR,TradeZone LLC
 91.218.212.223,443,UA,TOV 'Dream Line Holding'
 147.75.230.33,443,US,Aryaka Networks, Inc.
 156.154.245.83,443,US,Arbor Cloud
